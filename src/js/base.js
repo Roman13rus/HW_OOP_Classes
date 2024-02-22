@@ -1,19 +1,20 @@
 export default class Character {
-  constructor(name, type, health, level, attack, defence) {
+  constructor(name, type) {
+    const types = ['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
     if (typeof name === 'string' && (name.length >= 2 && name.length <= 10)) {
       this.name = name;
     } else {
       throw new Error('Имя должно быть строкой и иметь от 2 до 10 знаков.');
     }
-    if (['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'].includes(type)) {
+    if (types.includes(type)) {
       this.type = type;
     } else {
       throw new Error('Тип должен быть определенным');
     }
-    this.health = health;
-    this.level = level;
-    this.attack = attack;
-    this.defence = defence;
+    this.health = 100;
+    this.level = 1;
+    this.attack = undefined;
+    this.defence = undefined;
   }
 
   levelUp() {
